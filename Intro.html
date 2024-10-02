@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Intro DOM</title>
+</head>
+
+<body>
+    <h2>Finding HTML Elements by Id</h2>
+    <p id="d">Find the Elements by ID with Zach</p>
+    <p>Find the Elements by Tagname with Zach</p>
+    <div class="main">
+        <p>zach is try to change the all the paragraph of the main</p>
+        <p>it is a second paragraph</p>
+    </div>
+    <p id="demo"></p>
+    <script>
+        // Get the element with id="d"
+        const x = document.getElementById("d");
+        document.getElementById('demo').innerHTML += "There is the Element which zach finding :- " + x.innerHTML + "<br>";
+        //Get the element with tagname <p>
+        const y = document.getElementsByTagName("p");
+        document.getElementById('demo').innerHTML += "There is the Element which zach finding :- " + y[1].innerHTML + "<br>";
+        //Get the element with class 
+        const a = document.getElementsByClassName('main');
+        document.getElementById('demo').innerHTML += "There is the Element which zach chaning the parapgraph:- " + a[0].innerHTML + "<br>";
+    </script>
+</body>
+
+</html>

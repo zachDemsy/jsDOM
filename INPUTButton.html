@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InputButton</title>
+</head>
+
+<body>
+    <form action="" method="get" id="finfo">
+        <input type="text" name="nfame" id="fname" placeholder="Enter your name">
+        <input type="text" name="lname" id="lname" placeholder="Enter your lastname">
+        <button type="button" onclick="submitForm()">Submit</button>
+        <input type="button" onclick="Myrest()" value="Reset">
+    </form>
+    <div class="output" id="output" style="display: none;">
+        <h3>Your Submitted Information:</h3>
+        <p><strong>Name:</strong> <span id="displayName"></span></p>
+        <p><strong>Email:</strong> <span id="displayEmail"></span></p>
+    </div>
+    <h2>Display info without submit </h2>
+    <button type="button" onclick="displayInfo()">click this for</button>
+    <button type="button" onclick="acceptCharset()">click this for Accept charset</button>
+    <div id="demo"></div>
+    </div>
+    <script>
+        //submit form()
+        function submitForm() {
+            const name = document.getElementById('fname').value;
+            const email = document.getElementById('lname').value;
+            const outputSection = document.getElementById('output');
+            outputSection.style.display = 'block';
+            document.getElementById('displayName').textContent = name;
+            document.getElementById('displayEmail').textContent = email;
+            document.getElementById('infoForm').reset();
+        }
+        //resetform()
+        function myFunction() {
+            document.getElementById("finfo").reset();
+        }
+        //display the the value of the element without using submit with the button 
+        function displayInfo() {
+            var x = document.getElementById("finfo");
+            var text = "";
+            var i;
+            for (i = 0; i < x.length; i++) {
+                text += x.elements[i].value + "<br>";
+            }
+            document.getElementById("demo").innerHTML += text;
+        }
+        //charset of the form
+        function acceptCharset() {
+            var y = document.getElementById("finfo").acceptCharset;
+            document.getElementById("demo").innerHTML += "<br><h2>AcceptCharset value of the </h2>" + y;
+        }
+    </script>
+</body>
+
+</html>

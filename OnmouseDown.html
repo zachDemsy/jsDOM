@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Mouse and onload</title>
+    <script>
+        function writeText(txt) {
+            document.getElementById("desc").innerHTML = txt;
+        }
+
+        function myFunction() {
+            document.getElementById("demo").innerHTML = "Hello World";
+        }
+        //load alert
+        function myload() {
+            alert("Page is loaded");
+        }
+        //load Image 
+        function loadImage() {
+            alert("Image is loaded");
+        }
+        //error
+        function imgError() {
+            alert('The image could not be loaded.');
+        }
+        //onunload 
+        function myunload() {
+            alert("Thank you for visiting W3Schools!");
+        }
+        //keycode
+        function whichButton(event) {
+            document.getElementById("demo1").innerHTML += event.keyCode;
+        }
+        //showcoodrinate
+        function show_coords(event) {
+            document.getElementById("demo1").innerHTML += "X= " + event.clientX + "<br>Y= " + event.clientY;
+        }
+        //shiftkeynot passed
+        function isKeyPressed(event) {
+            var text = "The shift key was NOT pressed!";
+            if (event.shiftKey == 1) {
+                text = "The shift key was pressed!";
+            }
+            document.getElementById("demo1").innerHTML = text;
+        }
+    </script>
+</head>
+
+<body onunload="myunload()" onkeydown="whichButton(event)" onmousedown="isKeyPressed(event)">
+
+    <img src="./winking-face.png" width="145" height="126" alt="Planets" usemap="#planetmap" />
+
+    <map name="planetmap">
+  <area shape ="rect" coords ="0,0,82,126"
+  onmouseover="writeText('The Sun and the gas giant planets like Jupiter are by far the largest objects in our Solar System.')"
+  href ="sum.htm" target ="_blank" alt="Sun" />
+  
+  <area shape ="circle" coords ="90,58,3"
+  onmouseover="writeText('The planet Mercury is very difficult to study from the Earth because it is always so close to the Sun.')"
+  href ="mercur.htm" target ="_blank" alt="Mercury" />
+  
+  <area shape ="circle" coords ="124,58,8"
+  onmouseover="writeText('Until the 1960s, Venus was often considered a twin sister to the Earth because Venus is the nearest planet to us, and because the two planets seem to share many characteristics.')"
+  href ="venus.htm" target ="_blank" alt="Venus" />
+  </map>
+
+    <p id="desc">Mouse over the sun and the planets and see the different descriptions.</p>
+    <h1>JavaScript HTML Events</h1>
+    <h2>The ondblclick Attribute</h2>
+
+    <p ondblclick="myFunction()">Doubleclick this paragraph to trigger a function.</p>
+
+    <p id="demo"></p>
+    <img src="winking-face.png" onload="loadImage()" onerror="imgError()" width="100" height="132">
+    <p onmousedown="show_coords(event)">Click this paragraph to display the x and y coordinates of the mouse pointer.</p>
+    <p id="demo1"></p>
+</body>
+
+</html>

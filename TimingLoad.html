@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TimeLoading</title>
+</head>
+
+<body>
+    <h2>JavaScript Timing</h2>
+    <p>Click "Try it". Wait 3 seconds, and the page will alert "Hello".</p>
+    <button onclick="setTimeout(myFunction, 3000);">Try it</button>
+    <p id="demo">I will display when two, four, and six seconds have passed.</p>
+    <button onclick="myTimer =setInterval(myCounter, 1000)">Start the counter</button>
+    <button onClick="clearInterval(myTimer)">Stop counter!</button>
+    <p id="d1"></p>
+    <script>
+        function myFunction() {
+            alert('Hello');
+        }
+        setTimeout(myTimeout1, 2000)
+        setTimeout(myTimeout2, 4000)
+        setTimeout(myTimeout3, 6000)
+
+        function myTimeout1() {
+            document.getElementById("demo").innerHTML = "2 seconds";
+        }
+
+        function myTimeout2() {
+            document.getElementById("demo").innerHTML = "4 seconds";
+        }
+
+        function myTimeout3() {
+            document.getElementById("demo").innerHTML = "6 seconds";
+        }
+        var c = 0;
+
+        function myCounter() {
+            document.getElementById("d1").innerHTML = ++c;
+        }
+    </script>
+
+</body>
+
+</html>

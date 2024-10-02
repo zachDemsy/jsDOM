@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eventtest</title>
+</head>
+
+<body>
+    <h2>The onblur Attribute</h2>
+
+    Enter your name: <input type="text" id="fname" onblur="MyUpperCase()" onfocus="myOnFocuse(this)" onkeyup="MyUpperCase()">
+
+    <p>When you leave the input field, a function is triggered which transforms the input text to upper case.</p>
+    <form>
+        Choose which browser you prefer:
+        <select id="browsers" onchange="preferedBrowser()">
+            <option value="Chrome">Chrome</option>
+            <option value="Internet Explorer">Internet Explorer</option>
+            <option value="Firefox">Firefox</option>
+          </select>
+        <br><br>
+        <form>
+            Enter your name:
+            <input type="text" name="myInput" onkeyup="writeMessage()" size="20">
+            <input type="text" name="mySecondInput" size="20">
+            <input type="text" onkeydown="color('yellow')" onkeyup="color('white')" name="myInput">
+        </form>
+
+    </form>
+    </form>
+    <script>
+        //onchange To UpperCase 
+        function MyUpperCase() {
+            const x = document.getElementById("fname");
+            x.value = x.value.toUpperCase();
+        }
+        //preferedBrowser
+        function preferedBrowser() {
+            prefer = document.forms[0].browsers.value;
+            alert("You prefer browsing internet with " + prefer);
+        }
+        //onfocuse
+        function myOnFocuse(y) {
+            y.style.background = "yellow";
+        }
+        //deplication of the character in the simipler field
+        function writeMessage() {
+            document.forms[0].mySecondInput.value = document.forms[0].myInput.value;
+        }
+        //color change
+        function color(color) {
+            document.forms[0].myInput.style.background = color;
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,19 @@
+< script >
+    function updateTimezone(timezone) {
+        const clockDiv = document.getElementById("clock");
+
+        // Create a new Date object with the selected timezone
+        const date = new Date();
+        const options = {
+            timeZone: timezone,
+            timeZoneName: "short"
+        };
+        const formattedTime = date.toLocaleTimeString("en-US", options);
+
+        // Update the clock display
+        clockDiv.innerText = `Current time in ${timezone}: ${formattedTime}`;
+    }
+
+// Update the clock display initially
+updateTimezone('US/Pacific'); <
+/script>

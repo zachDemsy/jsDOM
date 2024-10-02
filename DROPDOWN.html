@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DropDOWN</title>
+</head>
+
+<body>
+    <form>
+        <select id="mySelect">
+          <option>Apple</option>
+          <option>Pear</option>
+          <option>Banana</option>
+          <option>Orange</option>
+        </select>
+        <br><br>
+        <input type="button" onclick="disable()" value="Disable list">
+        <input type="button" onclick="enable()" value="Enable list">
+        <input type="button" value="changeSize" onclick="changeSize()">
+        <br>
+        <br>
+        <input type="text" id="newValue" placeholder="New Value">
+        <br>
+        <br>
+        <input type="number" id="newIndex" min="0" placeholder="New Index">
+        <br>
+        <br>
+        <input type="button" value="Update Option and Index" onclick="updateOptionAndIndex()">
+        <br>
+        <br>
+        <input type="text" id="newOption" placeholder="newOption">
+        <br>
+        <br>
+        <input type="number" id="newOptionIndex" min="0" placeholder="newOptionIndex">
+        <br>
+        <br>
+        <input type="button" value="Add New Option" onclick="addNewOption()">
+        <br><br>
+        <input type="number" id="deleteIndex" min="0" placeholder="Enter the option number you want to delete">
+        <input type="button" value="Delete Option" onclick="deleteOption()">
+        <br><br>
+
+    </form><br>
+    <button onclick="getValue()">getValue</button><br>
+    <button onclick="allgetValue()">All getValue</button>
+    <p>The id of the form is:
+        <p>
+            <p id="demo"></p>
+            <script>
+                //disable
+                function disable() {
+                    document.getElementById("mySelect").disabled = true;
+                }
+                //enable
+                function enable() {
+                    document.getElementById("mySelect").disabled = false;
+                }
+                //form.id
+                document.getElementById("demo").innerHTML += document.getElementById("mySelect").id;
+                //dropdowm.lenght
+                document.getElementById("demo").innerHTML += "<br> The length of the dropdown " + document.getElementById("mySelect").length;
+                //change Size 
+                function changeSize() {
+                    document.getElementById("mySelect").size = 4;
+                }
+                //get the value
+                function getValue() {
+                    var obj = document.getElementById("mySelect");
+                    document.getElementById("demo").innerHTML += "<br>" + obj.options[obj.selectedIndex].text;
+                    document.getElementById("demo").innerHTML += " Index is " + document.getElementById("mySelect").selectedIndex;
+                }
+                //get all the values
+                function allgetValue() {
+                    var x = document.getElementById("mySelect");
+                    var txt = "";
+                    var i;
+                    for (i = 0; i < x.length; i++) {
+                        txt = txt + " <br>" + x.options[i].text;
+                    }
+                    document.getElementById("demo").innerHTML = txt;
+                }
+                //Add option()
+                function addNewOption() {
+                    var select = document.getElementById("mySelect");
+                    var newOptionText = document.getElementById("newOption").value;
+                    var newOptionIndex = parseInt(document.getElementById("newOptionIndex").value);
+
+                    if (newOptionText && newOptionIndex >= 0 && newOptionIndex <= select.length) {
+                        // Create a new option
+                        var newOption = new Option(newOptionText);
+
+                        // Insert the new option at the specified index
+                        select.add(newOption, newOptionIndex);
+
+                        document.getElementById("demo").innerHTML = "Added: " + newOptionText + " at index " + newOptionIndex;
+                    } else {
+                        document.getElementById("demo").innerHTML = "Invalid input for new option or index.";
+                    }
+                }
+                //updateOptin()
+                function updateOptionAndIndex() {
+                    var select = document.getElementById("mySelect");
+                    var newValue = document.getElementById("newValue").value;
+                    var newIndex = parseInt(document.getElementById("newIndex").value);
+
+                    if (select.selectedIndex !== -1 && newIndex >= 0 && newIndex < select.length) {
+                        // Get the selected option
+                        var selectedOption = select.options[select.selectedIndex];
+                        // Update the text of the selected option
+                        selectedOption.text = newValue;
+                        // Remove the selected option from its current position
+                        var tempOption = new Option(selectedOption.text, selectedOption.value);
+                        select.remove(select.selectedIndex);
+                        // Insert the option at the new index
+                        select.add(tempOption, newIndex);
+                        // Set the newly added option as selected
+                        select.selectedIndex = newIndex;
+
+                        document.getElementById("demo").innerHTML = "Updated to: " + newValue + " at index " + newIndex;
+                    } else {
+                        document.getElementById("demo").innerHTML = "Invalid index or no option selected.";
+                    }
+                }
+                //delect option by the name
+                function deleteOption() {
+                    var select = document.getElementById("mySelect");
+                    var deleteIndex = parseInt(document.getElementById("deleteIndex").value);
+
+                    if (deleteIndex >= 0 && deleteIndex < select.length) {
+                        select.remove(deleteIndex);
+                        document.getElementById("demo").innerHTML = "Deleted option at index " + deleteIndex;
+                    } else {
+                        document.getElementById("demo").innerHTML = "Invalid index for deletion.";
+                    }
+                }
+            </script>
+</body>
+
+</html>
